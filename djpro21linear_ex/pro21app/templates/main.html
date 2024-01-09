@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script>
+		$(document).ready(function () {
+			$("#btnOk").click(function () {
+				let dates = $("#DatesYear").val();
+				$("#showData").empty();
+
+				$.ajax({
+					url: 'list',
+					type: 'get',
+					data: {'dates': dates},
+					success: function (data) {
+						if(data == ''){
+							$("#showData").append("해당 자료가 없습니다.")
+						}else{
+							let str = "<table border='1'>";
+							let count=0;
+							str+="<tr><th>예상연봉액</th><th>직원명</th><th>근무년수</th><th>연봉</th></tr>";
+							$.each(data,function(ind,entry){
+								str+="<tr>";
+								str+="<td>"+entry['jikwon_no']+"</td>";
+								str+="<td>"+entry['jikwon_name']+"</td>";
+								str+="<td>"+entry['jikwon_dates']+"</td>";
+								str+="<td>"+entry['jikwon_pay']+"</td>";
+								str+="<tr>";
+								count+=1;
+							});
+							str+="</table>";
+							$("#showData").append(str);
+							$("#showData").append("건수 : "+count);
+						}
+					}, error: function () {
+						$("#showData").text("에러");
+					}
+				});
+			});
+		});
+	</script>
+</head>
+
+<body>
+	근무년수:
+	<input type="number" name="dates" id="DatesYear">
+	<input type="button" id="btnOk" value="확인 버튼">
+	<br />
+	<div id="showData"></div>
+</body>
+
+</html>

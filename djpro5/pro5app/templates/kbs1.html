@@ -1,0 +1,20 @@
+{% extends 'header.html' %} <!-- header의 틀안에 내용을  위해 html태그 body태그 다 삭제함-->
+{% block content %}
+친구 목록</p>
+<table>
+	<tr><th>번호</th><th>이름</th></tr>
+	<tr>
+		<th>1</th><th>준수</th>
+	</tr>
+	<tr>
+		<th>2</th><th>범준</th>
+	</tr>
+</table>
+{% endblock %}
+
+<!--
+templates에서 동적인 것을 만들어서 완전한 html을 만든것
+브라우저는 정적인 내용만 파씽할 수 있다.
+이렇게 실질적인 데이터와 연결되어야 하는 데이터들은 서버에서 만들어져서 나오는 것 timeleaf와 다를바가 없다.
+자원의 재활용이 목적
+-->

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	직원정보
+	<p />
+	<table border="1">
+		<tr>
+			<th>직원번호</th>
+			<th>직원명</th>
+			<th>직급</th>
+			<th>관리고객</th>
+		</tr>
+		{% if jikwons %}
+		{% for j in jikwons %}
+		<tr>
+			<td>{{j.jikwon_no}}</td>
+			<td>
+				{% if j.gogeks > 0 %}
+				<a href="/buser/findgogek?jikwon_no={{j.jikwon_no}}">{{j.jikwon_name}}</a>
+				{% else %}
+				{{j.jikwon_name}}
+				{% endif %}
+			</td>
+
+			<td>{{j.jikwon_jik}}</td>
+			<td>{{j.gogeks}}</td>
+		</tr>
+		{% endfor %}
+		{% else %}
+		<tr>
+			<td colspan="4">자료없음</td>
+		</tr>
+		{% endif %}
+	</table>
+</body>
+
+</html>

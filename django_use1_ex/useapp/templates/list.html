@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jikwon List</title>
+</head>
+<body>
+
+<h1>Jikwon List</h1>
+
+{% if df %}
+    {{ df|safe }} <!-- df.to_html()의 결과를 안전하게 렌더링 -->
+{% else %}
+    <p>No data available</p>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+<script>
+	window.onload=function(){
+		document.querySelector("#btnOk").onclick=function(){
+			frm.submit();
+		}
+	}
+</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>
+				<img src="/static/images/pic2.jpg" style="width:50%" />
+			</td>
+			<td>
+				<pre>
+잘풀리는집 맥스 다용도 키친타올 250매, 12개
+64,544개 상품평
+16% 17,900원 
+14,900원
+(10매당 50원)
+최대 745원 적립
+내일(토) 10/21 도착 보장 (11시간 58분  내 주문 시 / 서울⋅경기 기준)  다른 판매자 보기(18) 
+로켓배송 상품 19,800원 이상 무료배송
+무료배송 + 무료반품
+|
+로켓와우 신청시
+ 캐시적립 혜택 상세보기 | 최대 745원 적립
+쿠페이 머니 결제 시 1% 적립
+[로켓와우 + 쿠페이 계좌이체] 결제 시 2% 적립
+[로켓와우 + 쿠페이 머니] 결제 시 4% 추가적립 2687일 남음
+1
+겹수: 2겹
+내지 매수: 250매
+총 수량: 12개
+무형광여부: 무형광
+쿠팡상품번호: 7271386589 - 19385285625
+			</pre>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<form action="cart" name="frm" method="post">{% csrf_token %}
+					<input type="hidden" name="name" value="잘풀리는집 맥스 다용도 키친타올 250매">
+					<input type="hidden" name="price" value="64544">
+					<input type="button" id="btnOk" value="장바구니에 담기"> <!--id를 통해 자바스크립트을 쓸수 있다-->
+					<input type="button" value="홈으로" onclick="history.back()">
+				</form>
+			</td>
+		</tr>
+	</table>
+</body>
+
+</html>

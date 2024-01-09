@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+<script>
+	window.onload=function(){
+		document.querySelector("#btnOk").onclick=function(){
+			frm.submit();
+		}
+	}
+</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>
+				<img src="/static/images/pic1.jpg" style="width:50%" />
+			</td>
+			<td>
+				<pre>
+				정원삼 6년근 고려홍삼정 365 스틱 30포 + 쇼핑백
+원산지: 상품 상세설명 참조
+46,454개 상품평
+29% 39,000원 
+27,400원
+(10g당 913원)
+최대 1,370원 적립
+무료배송  다른 판매자 보기(6)
+내일(토) 10/21 도착 보장 (12시간 6분 내 주문 시 / 서울⋅경기 기준)
+내일(토) 10/21 새벽 7시 전 도착 보장 (밤 12시 전 주문 시 / 서울⋅경기 기준) 
+캐시적립 혜택 상세보기 | 최대 1,370원 적립
+쿠페이 머니 결제 시 1% 적립
+[로켓와우 + 쿠페이 계좌이체] 결제 시 2% 적립
+[로켓와우 + 쿠페이 머니] 결제 시 4% 추가적립 2687일 남음
+1
+유통기한: 2024-10-28 이거나 그 이후인 상품
+개당 중량: 300g
+타입: 스틱
+사용대상: 범용
+선물세트 여부: 선물세트
+쿠팡상품번호: 7456306827 - 19423931670
+			</pre>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<form action="cart" name="frm" method="post">{% csrf_token %}
+					<input type="hidden" name="name" value="정원삼 6년근 고려홍삼정 365 스틱 30포 쇼핑백">
+					<input type="hidden" name="price" value="39000">
+					<input type="button" id="btnOk" value="장바구니에 담기"> <!--id를 통해 자바스크립트을 쓸수 있다-->
+					<input type="button" value="홈으로" onclick="history.back()">
+				</form>
+			</td>
+		</tr>
+	</table>
+</body>
+
+</html>

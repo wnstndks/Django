@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+		window.onload = function () {
+			document.getElementById("btnOk").onclick = confirmFunc;
+			document.getElementById("btnShow").onclick = function () {
+				
+				location.href = "/family/select";
+			};
+		}
+
+
+		function confirmFunc() {
+			
+			if (frm.name.value === "") {
+				frm.name.placeholder = "이름을 입력하세요"
+				return false;
+			}
+			frm.submit()
+		}
+
+	</script>
+</head>
+
+<body>
+	** 글 작성 **
+
+	<form action="/family/insertOk" method="post" name="frm" onsubmit="return false">{% csrf_token %}
+		<!-- 웹 특성상 form태그 안에 있는 input type="text"는 single line이기 때문에 enter를 누르면 넘어감 -->
+		<!-- 그것을 막기위해 onsubmit="return false" 작성해줘 -->
+		<table>
+			<tr>
+				<td>이름</td>
+				<td><input type="text" name="name"></td>
+			</tr>
+			<tr>
+				<td>나이</td>
+				<td><input type="number" name="age"></td>
+			</tr>
+			<tr>
+				<td>전화</td>
+				<td><input type="text" name="tel"></td>
+			</tr>
+			<tr>
+				<td>성별</td>
+				<td>
+				<label for="male">남자</label>
+				<input type="radio" id="male" name="gen" value="남자" checked>
+
+				<label for="female">여자</label>
+				<input type="radio" id="female" name="gen" value="여자">
+				</td>
+			</tr>
+
+			<tr>
+				<td colspan="2">
+					<input type="button" id="btnOk" value="등록하기" />
+					<input type="button" id="btnShow" value="목록보기" />
+				</td>
+			</tr>
+		</table>
+
+	</form>
+</body>
+
+</html>

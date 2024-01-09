@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	부서 정보
+	<p />
+	<table border="1">
+		<tr>
+			<th>부서번호</th>
+			<th>부서명</th>
+			<th>부서전화</th>
+			<th>지역명</th>
+		</tr>
+		{% if buser %}
+		{% for b in buser %}
+		<tr>
+			<td>{{b.buser_no}}</td>
+			<td>
+				<a href="/buser/find?buser_no={{b.buser_no}}">{{b.buser_name}}</a>
+			</td>
+			<td>{{b.buser_tel}}</td>
+			<td>{{b.buser_loc}}</td>
+		</tr>
+		{% endfor %}
+		{% else %}
+		<tr>
+			<td colspan="4">자료없음</td>
+		</tr>
+		{% endif %}
+	</table>
+</body>
+
+</html>

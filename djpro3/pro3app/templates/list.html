@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/static/css/test.css">
+<script type="text/javascript" src="/static/javascript/test.js"></script>
+<!--
+<script>
+	window.onload=function(){
+		alert("자바스크립트");
+	}
+</script>
+-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+	$().ready(function(){
+		alert("jquery");
+		
+		$("#myImg").click(function(){
+			abc();
+		})
+	});
+</script>
+</head>
+<body>
+결과는 {{irum}}
+<p/>
+<img src="/static/images/images.jpg" id="myImg"/>
+<br/>
+<button onclick="abc()">뒤로가기</button>
+</body>
+</html>

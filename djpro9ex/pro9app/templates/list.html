@@ -1,0 +1,27 @@
+{% extends 'header.html' %}
+{% block content %}
+<h2>* 친구목록 *</h2>
+{% if datas.count > 0 %}
+<table class="table">
+    <tr>
+        <th>번호</th>
+        <th>이름</th>
+        <th>주소</th>
+        <th>나이</th>
+    </tr>
+    {% for a in datas %}
+    <tr>
+        <td>{{ a.id }}</td>
+        <td>{{ a.irum }}</td>
+        <td>{{ a.juso }}</td>
+        <td>{{ a.nai }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>친구가 없어요</p>
+{% endif %}
+<br />
+<b>건수:</b> {{ count }} <b>명</b><br />
+<button onclick="abc()">홈으로</button>
+{% endblock %}

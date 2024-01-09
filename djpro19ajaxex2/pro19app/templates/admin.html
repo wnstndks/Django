@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script>
+		$(document).ready(function () {
+			$("#btnProduct").click(function () {
+				$.ajax({
+					url: 'productadmin',
+					type: 'get',
+					success: function (data) {
+						let str = "<table style='width:95%;' class='table'>";
+						let count = 0;
+						str += "<tr><th>id</th><th>분류</th><th>상품명</th><th>가격</th><th>재고량</th><th>설명</th></tr>";
+						$.each(data, function (ind, entry) {
+							str += "<tr>";
+							str += "<td>" + entry['id'] + "</td>";
+							str += "<td>" + entry['category'] + "</td>";
+							str += "<td>" + entry['pname'] + "</td>";
+							str += "<td>" + entry['price'] + "</td>";
+							str += "<td>" + entry['stock'] + "</td>";
+							str += "<td>" + entry['description'] + "</td>";
+							str += "<tr>";
+							count += 1;
+						});
+						str += "</table>";
+						$("#showData").empty();
+						$("#showData").append(str);
+						$("#showData").append("건수 : " + count);
+
+					},
+					error: function () {
+						$("#showData").text("에러");
+					}
+				});
+			});
+		});
+
+	</script>
+	<script>
+		$(document).ready(function () {
+			$("#showProductForm").click(function () {
+				$("#productForm").toggle(); // 폼을 토글하여 보이거나 숨깁니다.
+			});
+
+			$("#productForm").submit(function (e) {
+				e.preventDefault();
+
+				$.ajax({
+					url: 'productadd',
+					type: 'post',
+					data: $(this).serialize(),
+					success: function (data) {
+						$('#result').html(data);
+						$('#productForm').hide();
+					},
+					error: function () {
+						$('#result').html('에러 발생');
+					}
+				});
+			});
+		});
+
+	</script>
+</head>
+
+<body style="margin:20px;">
+	<h2>관리자 </h2>
+	<input type="button" id="btnProduct" value="상품 보기"><button id="showProductForm">상품 추가</button><a href="/">메인화면</a>
+	<br />
+	<br />
+	<div id="showData"></div>
+	<form id="productForm" style="display: none;">{% csrf_token %}
+		<table style="width: 95%;" class='table'>
+			<tr>
+				<td>
+					분 류:
+					<label><input type="radio" name="category" value="1"> 버거</label>
+					<label><input type="radio" name="category" value="2"> 음료</label>
+				</td>
+			</tr>
+			<tr>
+				<td>품 명: <input type="text" name="pname"></td>
+			</tr>
+			<tr>
+				<td>가 격: <input type="text" name="price"></td>
+			</tr>
+			<tr>
+				<td>수 량: <input type="text" name="stock"></td>
+			</tr>
+			<tr>
+				<td>설 명: <textarea rows="5" style="width: 99%" name="description"></textarea></td>
+			</tr>
+			<tr>
+				<td><input type="submit"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+
+</html>
