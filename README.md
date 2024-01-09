@@ -1,1 +1,1 @@
-# Studied Django
+### Learn about Django 💻
